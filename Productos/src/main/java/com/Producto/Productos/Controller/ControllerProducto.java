@@ -23,6 +23,9 @@ public class ControllerProducto {
 @Autowired
 private ServiceProducto serviciopro;
 private RepositoryProducto repo;
+public ControllerProducto(){
+    repo=new RepositoryProducto();
+}
 
 @GetMapping
 public List<Producto> listarProductos(){
@@ -47,11 +50,11 @@ public List<Producto> listarProductos(){
     }
 @GetMapping("/tipo/{tipo}")
 public List <Producto> getPorTipo(@PathVariable String tipo) {
-    return repo.filtraTipo(tipo);
+    return serviciopro.filtraTipo(tipo);
 }
 @GetMapping("/color/{color}")
 public List <Producto> getPorColor(@PathVariable String color) {
-    return repo.filtraColor(color);
+    return serviciopro.filtraColor(color);
 }
 
 }
